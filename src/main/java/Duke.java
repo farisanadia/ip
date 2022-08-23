@@ -149,7 +149,6 @@ public class Duke {
                     System.out.println(buffLine + "\n    Noted. I've removed this task: ");
                     taskList[Character.getNumericValue(userReply.charAt(7)) - 1].fullDesc();
                     for (int i = Character.getNumericValue(userReply.charAt(7)) - 1; i < IND_COUNT; i++) {
-                        taskList[i].fullDesc();
                         taskList[i] = taskList[i + 1];
                     }
                     IND_COUNT--;
