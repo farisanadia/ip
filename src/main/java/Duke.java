@@ -1,11 +1,9 @@
-//unable to update duke.txt after marking, unmarking or deleting in this version
 import jdk.jshell.Snippet;
 import java.io.*;
 import java.time.chrono.MinguoDate;
 import java.util.Scanner;
 
 public class Duke {
-
     private static int IND_COUNT;
     private static Task[] taskList;
 
@@ -15,8 +13,8 @@ public class Duke {
         fw.close();
     }
 
-   //adds previous tasks back into taskList when restarting Duke
-   private static void readFile(File dukeFile) {
+    //adds previous tasks back into taskList when restarting Duke
+    private static void readFile(File dukeFile) {
         try {
             Scanner sc = new Scanner(dukeFile);
             while (sc.hasNextLine()) {
@@ -28,9 +26,9 @@ public class Duke {
         } catch (FileNotFoundException e) {
             System.out.println("Error reading file: file not found");
         }
-   }
+    }
 
-   private static boolean addTaskList(String[] strArray) {
+    private static boolean addTaskList(String[] strArray) {
         if (strArray[0].equals("T")) {
             Task newTask = new ToDos(strArray[2]);
             taskList[IND_COUNT] = newTask;
@@ -44,29 +42,24 @@ public class Duke {
             return true;
         }
         return false;
-   }
+    }
 
-   //rewrites entire duke.txt file when delete, mark or unmark called
+    //rewrites entire duke.txt file when delete, mark or unmark called
     //shld replace with code that modifies the txt file rather than rewrites it entirely
-    //is broken :'(
-  /** private static boolean modifyFile(File dukeFile) throws IOException {
-        try {
-            PrintWriter writer = new PrintWriter(dukeFile);
-            writer.print("");
-            writer.close();
-        } catch (FileNotFoundException e) {
-            System.out.println(e);
-        }
-        try {
-            for (int i = 0; i < IND_COUNT; i++) {
-                appendToFile("duke.txt", taskList[IND_COUNT].textDesc());
-            }
-        } catch (IOException e) {
-            System.out.println(e);
-        }
-        return true;
-   }
-   */
+    private static boolean modifyFile(File dukeFile) throws IOException {
+         try {
+             PrintWriter writer = new PrintWriter(dukeFile);
+             writer.print("");
+             for (int i = 0; i < IND_COUNT; i++) {
+                 appendToFile("duke.txt", taskList[i].textDesc());
+             }
+             writer.close();
+         } catch (FileNotFoundException e) {
+             System.out.println(e);
+         }
+         return true;
+    }
+
 
     public static void main(String[] args) throws DukeException, IOException {
         File dukeFile = new File("duke.txt"); //creates new text file
@@ -90,10 +83,8 @@ public class Duke {
             try {
                 if (userReply.toLowerCase().startsWith("mark")) {
                     int pos = Character.getNumericValue(userReply.charAt(5));
-                    String prevDesc = taskList[pos - 1].textDesc();
                     taskList[pos - 1].markAsDone();
-                    System.out.println(IND_COUNT);
-                    //modifyFile(dukeFile);
+                    modifyFile(dukeFile);
                     System.out.println(buffLine + "\n" + "    Nice! I've marked this task as done: ");
                     taskList[pos - 1].fullDesc();
                     System.out.println(buffLine);
@@ -101,7 +92,7 @@ public class Duke {
                 } else if (userReply.toLowerCase().startsWith("unmark")) {
                     int pos = Character.getNumericValue(userReply.charAt(7));
                     taskList[pos - 1].markAsUndone();
-                    //modifyFile(dukeFile);
+                    modifyFile(dukeFile);
                     System.out.println(buffLine + "\n" + "    Ok, I've marked this task as not done yet: ");
                     taskList[pos - 1].fullDesc();
                     System.out.println(buffLine);
@@ -139,7 +130,7 @@ public class Duke {
                 } else if (userReply.toLowerCase().startsWith("event")) {
                     int splitPoint = userReply.indexOf("/");
                     taskList[IND_COUNT] = new Events(userReply.substring(6, splitPoint - 1),
-                        userReply.substring(splitPoint + 1, userReply.length()));
+                            userReply.substring(splitPoint + 1, userReply.length()));
                     System.out.println("    Got it. I've added this task: ");
                     taskList[IND_COUNT].fullDesc();
                     System.out.println("    Now you have " + String.valueOf(IND_COUNT + 1)
@@ -147,9 +138,9 @@ public class Duke {
                     appendToFile("duke.txt", taskList[IND_COUNT].textDesc());
                     IND_COUNT++;
                     userReply = sc.nextLine();
-                } else if (userReply.toLowerCase().startsWith("list")){
+                } else if (userReply.toLowerCase().startsWith("list")) {
                     System.out.println(buffLine);
-                    for (int i = 0; i <  IND_COUNT; i++) {
+                    for (int i = 0; i < IND_COUNT; i++) {
                         System.out.println("    " + (i + 1) + ". " + taskList[i].stringDesc());
                     }
                     System.out.println(buffLine);
@@ -157,16 +148,16 @@ public class Duke {
                 } else if (userReply.toLowerCase().startsWith("delete")) {
                     System.out.println(buffLine + "\n    Noted. I've removed this task: ");
                     taskList[Character.getNumericValue(userReply.charAt(7)) - 1].fullDesc();
-                    for (int i = userReply.charAt(7) - 1; i < IND_COUNT; i++) {
+                    for (int i = Character.getNumericValue(userReply.charAt(7)) - 1; i < IND_COUNT; i++) {
+                        taskList[i].fullDesc();
                         taskList[i] = taskList[i + 1];
                     }
                     IND_COUNT--;
-                   // modifyFile(dukeFile);
+                    modifyFile(dukeFile);
                     System.out.println("    Now you have " + String.valueOf(IND_COUNT) +
                             " tasks in this list." + "\n" + buffLine);
                     userReply = sc.nextLine();
-                }
-                else {
+                } else {
                     throw new DukeException("");
                 }
             } catch (DukeException e) {
