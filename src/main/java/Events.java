@@ -9,14 +9,18 @@ public class Events extends Task {
 
     public Events(String description, String d) {
         super(description);
-        String[] split = d.split("at ");
-        try {
-            this.duration = LocalDate.parse(split[1], parserFormats).
-                    format(DateTimeFormatter.ofPattern("MMM d yyyy"));
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Oops! Your deadline should have a due date after /deadline");
-        } catch (DateTimeParseException e) {
-            System.out.println("Please enter a valid date!");
+        if (!d.contains("at ")) {
+            this.duration = d;
+        } else {
+            String[] split = d.split("at ");
+            try {
+                this.duration = LocalDate.parse(split[1], parserFormats).
+                        format(DateTimeFormatter.ofPattern("MMM d yyyy"));
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Oops! Your deadline should have a due date after /deadline");
+            } catch (DateTimeParseException e) {
+                System.out.println("Please enter a valid date!");
+            }
         }
     }
 

@@ -4,9 +4,35 @@ import java.time.chrono.MinguoDate;
 import java.util.Scanner;
 
 public class Duke {
-    private static int IND_COUNT;
-    private static Task[] taskList;
+    protected Storage storage;
+    protected TaskList taskList;
+    protected Ui ui = new Ui();
+    protected Parser parser;
 
+    public void run() throws IOException {
+        ui.printGreeting();
+        File dukeFile = new File("duke.txt"); //creates new text file
+        dukeFile.createNewFile();
+        storage = new Storage("duke.txt", dukeFile);
+        taskList = new TaskList(storage.readFile(), storage);
+        parser = new Parser(ui, taskList); //must initialize taskList using storage
+        Scanner sc = new Scanner(System.in);
+        String userReply = sc.nextLine();
+
+        while (!userReply.equals("bye")) {
+            //to introduce parser object that takes processes user input
+            parser.inputProcessor(userReply);
+            userReply = sc.nextLine();
+        }
+
+        ui.printGoodbye();
+    }
+
+    public static void main(String[] args) throws IOException {
+        new Duke().run();
+    }
+
+    /**
     private static void appendToFile(String filePath, String textToAdd) throws IOException {
         FileWriter fw = new FileWriter(filePath, true);
         fw.write(textToAdd);
@@ -44,6 +70,7 @@ public class Duke {
         return false;
     }
 
+
     //rewrites entire duke.txt file when delete, mark or unmark called
     //shld replace with code that modifies the txt file rather than rewrites it entirely
     private static boolean modifyFile(File dukeFile) throws IOException {
@@ -59,6 +86,7 @@ public class Duke {
          }
          return true;
     }
+
 
 
     public static void main(String[] args) throws DukeException, IOException {
@@ -168,4 +196,5 @@ public class Duke {
         System.out.println(buffLine + "\n" + "    Bye. Hope to see you again soon!"
                 + "\n" + buffLine);
     }
+     */
 }
