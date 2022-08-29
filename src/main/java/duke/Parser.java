@@ -21,62 +21,62 @@ public class Parser {
     public void inputProcessor(String s) {
         String[] userInput = s.split(" ");
         switch (userInput[0].toLowerCase()) {
-            case "mark" :
-                try {
-                    int pos = Integer.parseInt(userInput[1]) - 1;
-                    taskList.markTask(pos);
-                    ui.printString("    Nice! I've marked this task as done: ");
-                    taskList.taskToString(pos);
-                    ui.printBuffLine();
-                    break;
-                } catch (IndexOutOfBoundsException e) {
-                    System.out.println("☹ OOPS!!! Invalid index given.");
-                    break;
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            case "unmark" :
-                try {
-                    int pos = Integer.parseInt(userInput[1])- 1;
-                    taskList.unmarkTask(pos);
-                    ui.printString("    Ok, I've marked this task as not done yet: ");
-                    taskList.taskToString(pos);
-                    ui.printBuffLine();
-                    break;
-                } catch (IndexOutOfBoundsException e) {
-                    System.out.println("☹ OOPS!!! Invalid index given.");
-                    break;
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            case "delete" :
-                try {
-                    int pos = Integer.parseInt(userInput[1]) - 1;
-                    ui.printString("    Noted. I've removed this task: ");
-                    taskList.taskToString(pos);
-                    taskList.removeTask(pos);
-                    ui.printString(" Now you have " + String.valueOf(taskList.getSize()) +
-                            " tasks in this list.");
-                    ui.printBuffLine();
-                    break;
-                } catch (IndexOutOfBoundsException e) {
-                    System.out.println("☹ OOPS!!! Invalid index given.");
-                    break;
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            case "list" :
-                ui.printBuffLine();
-                System.out.println(taskList.toString());
+        case "mark" :
+            try {
+                int pos = Integer.parseInt(userInput[1]) - 1;
+                taskList.markTask(pos);
+                ui.printString("    Nice! I've marked this task as done: ");
+                taskList.taskToString(pos);
                 ui.printBuffLine();
                 break;
-            case "todo" :
-            case "deadline" :
-            case "event" :
-                taskProcessor(s, userInput[0]);
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("☹ OOPS!!! Invalid index given.");
                 break;
-            default:
-                ui.printInvalidIndexError();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        case "unmark" :
+            try {
+                int pos = Integer.parseInt(userInput[1])- 1;
+                taskList.unmarkTask(pos);
+                ui.printString("    Ok, I've marked this task as not done yet: ");
+                taskList.taskToString(pos);
+                ui.printBuffLine();
+                break;
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("☹ OOPS!!! Invalid index given.");
+                break;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        case "delete" :
+            try {
+                int pos = Integer.parseInt(userInput[1]) - 1;
+                ui.printString("    Noted. I've removed this task: ");
+                taskList.taskToString(pos);
+                taskList.removeTask(pos);
+                ui.printString(" Now you have " + String.valueOf(taskList.getSize()) +
+                        " tasks in this list.");
+                ui.printBuffLine();
+                break;
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("☹ OOPS!!! Invalid index given.");
+                break;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        case "list" :
+            ui.printBuffLine();
+            System.out.println(taskList.toString());
+            ui.printBuffLine();
+            break;
+        case "todo" :
+        case "deadline" :
+        case "event" :
+            taskProcessor(s, userInput[0]);
+            break;
+        default:
+            ui.printInvalidIndexError();
         }
     }
 
