@@ -31,7 +31,6 @@ public class Parser {
                 break;
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("☹ OOPS!!! Invalid index given.");
-                break;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -68,6 +67,11 @@ public class Parser {
         case "list" :
             ui.printBuffLine();
             System.out.println(taskList.toString());
+            ui.printBuffLine();
+            break;
+        case "find" :
+            ui.printBuffLine();
+            System.out.println(taskList.findTask(userInput[1]));
             ui.printBuffLine();
             break;
         case "todo" :
