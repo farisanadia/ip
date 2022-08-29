@@ -48,4 +48,15 @@ public class TaskList {
     public int getSize() {
         return this.tasks.size();
     }
+
+    public String findTask(String s) {
+        String fullString = "";
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).textDesc().contains(s)) {
+                fullString += String.valueOf(i + 1) + ". "
+                        + tasks.get(i).stringDesc() + "\n";
+            }
+        }
+        return fullString;
+    }
 }

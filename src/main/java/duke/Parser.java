@@ -65,6 +65,11 @@ public class Parser {
                 System.out.println(taskList.toString());
                 ui.printBuffLine();
                 break;
+            case "find" :
+                ui.printBuffLine();
+                System.out.println(taskList.findTask(userInput[1]));
+                ui.printBuffLine();
+                break;
             case "todo" :
             case "deadline" :
             case "event" :
