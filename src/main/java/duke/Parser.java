@@ -13,6 +13,11 @@ public class Parser {
         this.taskList = t;
     }
 
+    /**
+     * Processes input given by user.
+     * If input unknown, passes error.
+     * @param s Input given by user.
+     */
     public void inputProcessor(String s) {
         String[] userInput = s.split(" ");
         switch (userInput[0].toLowerCase()) {
@@ -75,6 +80,11 @@ public class Parser {
         }
     }
 
+    /**
+     * Processes specific task given by user.
+     * @param input String input given by user to be processed.
+     * @param taskType String type of task given by user.
+     */
     public void taskProcessor(String input, String taskType) {
         if (taskType.equals("todo")) {
             try {

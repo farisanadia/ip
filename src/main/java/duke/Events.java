@@ -5,6 +5,10 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Represents a type of task that can be called by user. An Events object corresponds to
+ * an event to be attended by the user.
+ */
 public class Events extends Task {
     protected String taskType = "[E]";
     protected String duration;
@@ -32,12 +36,19 @@ public class Events extends Task {
             .appendOptional(DateTimeFormatter.ofPattern("yyyyMMdd"))
             .toFormatter();
 
+    /**
+     * Prints the full description of the event inputted by user.
+     */
     @Override
     public void fullDesc() {
         System.out.println("      " + this.taskType + this.getStatusIcon() +
                 " " + this.description + " (" + this.duration + ")");
     }
 
+    /**
+     * Returns a string of the details of an event inputted by user
+     * @return String description
+     */
     @Override
     public String stringDesc() {
         return this.taskType + this.getStatusIcon() +

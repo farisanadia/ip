@@ -13,6 +13,10 @@ public class Storage {
         this.dukeFile = dukeFile;
     }
 
+    /**
+     * Returns an array list of tasks users input in the past by reading file.
+     * @return ArrayList<Task> tasks.</Task>
+     */
     public ArrayList<Task> readFile() {
         ArrayList<Task> tasks = new ArrayList<>();
         try{
@@ -48,12 +52,22 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Appends a task to dukeFile when task is to be added.
+     * @param t String detailing task to be added.
+     * @throws IOException if no file detected.
+     */
     public void appendToFile(String t) throws IOException {
         FileWriter fw = new FileWriter(this.filePath, true);
         fw.write(t);
         fw.close();
     }
 
+    /**
+     * Modifies details of tasks in dukeFile.
+     * @param tasks ArrayList of tasks to update dukeFile with.
+     * @throws IOException if no file detected.
+     */
     public void modifyFile(ArrayList<Task> tasks) throws IOException {
         try {
             PrintWriter writer = new PrintWriter(this.dukeFile);
@@ -66,5 +80,4 @@ public class Storage {
             System.out.println("Error reading file: file not found!");
         }
     }
-
 }

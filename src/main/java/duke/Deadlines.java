@@ -6,6 +6,10 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
 
+/**
+ * Represents a type of task that can be called by user. A Deadlines object corresponds to
+ * a deadline to be met by the user.
+ */
 public class Deadlines extends Task {
     protected String taskType = "[D]";
     protected String deadline;
@@ -33,12 +37,19 @@ public class Deadlines extends Task {
             .appendOptional(DateTimeFormatter.ofPattern("yyyyMMdd"))
             .toFormatter();
 
+    /**
+     * Prints the full description of the deadline inputted by user.
+     */
     @Override
     public void fullDesc() {
         System.out.println("      " + this.taskType + this.getStatusIcon() +
                 " " + this.description + " (" + this.deadline + ")");
     }
 
+    /**
+     * Returns a string of the details of a deadline inputted by user
+     * @return String description
+     */
     @Override
     public String stringDesc() {
         return this.taskType + this.getStatusIcon() +
