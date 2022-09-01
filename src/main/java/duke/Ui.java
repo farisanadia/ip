@@ -29,8 +29,8 @@ public class Ui {
         printBuffLine();
     }
 
-    public void printInvalidIndexError() {
-        System.out.println("☹ OOPS!!! I'm sorry, but I don't know what that means.");
+    public String printInvalidIndexError() {
+        return "☹ OOPS!!! I'm sorry, but I don't know what that means.";
     }
 
 }

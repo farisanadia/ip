@@ -15,9 +15,9 @@ public class ToDos extends Task {
      * Prints the full description of the todo inputted by user.
      */
     @Override
-    public void fullDesc() {
-        System.out.println("      " + this.taskType +
-                this.getStatusIcon() + " " + this.description);
+    public String fullDesc() {
+        return "      " + this.taskType +
+                this.getStatusIcon() + " " + this.description;
     }
 
     /**

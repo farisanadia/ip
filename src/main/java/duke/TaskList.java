@@ -57,8 +57,8 @@ public class TaskList {
      * Prints string description of task at specified index.
      * @param pos Index of task to be printed.
      */
-    public void taskToString(int pos) {
-        tasks.get(pos).fullDesc();
+    public String taskToString(int pos) {
+        return this.tasks.get(pos).fullDesc();
     }
 
     /**

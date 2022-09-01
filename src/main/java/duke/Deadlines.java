@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
-import java.util.Date;
 
 /**
  * Represents a type of task that can be called by user. A Deadlines object corresponds to
@@ -41,9 +40,9 @@ public class Deadlines extends Task {
      * Prints the full description of the deadline inputted by user.
      */
     @Override
-    public void fullDesc() {
-        System.out.println("      " + this.taskType + this.getStatusIcon() +
-                " " + this.description + " (" + this.deadline + ")");
+    public String fullDesc() {
+        return "      " + this.taskType + this.getStatusIcon() +
+                " " + this.description + " (" + this.deadline + ")";
     }
 
     /**

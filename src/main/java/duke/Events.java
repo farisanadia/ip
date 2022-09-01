@@ -40,9 +40,9 @@ public class Events extends Task {
      * Prints the full description of the event inputted by user.
      */
     @Override
-    public void fullDesc() {
-        System.out.println("      " + this.taskType + this.getStatusIcon() +
-                " " + this.description + " (" + this.duration + ")");
+    public String fullDesc() {
+        return "      " + this.taskType + this.getStatusIcon() +
+                " " + this.description + " (" + this.duration + ")";
     }
 
     /**

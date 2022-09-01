@@ -39,8 +39,8 @@ public class Task {
     /**
      * Prints description of task object.
      */
-    public void fullDesc() {
-        System.out.println("      " + this.getStatusIcon() + " " + this.description);
+    public String fullDesc() {
+        return "      " + this.getStatusIcon() + " " + this.description;
     }
 
     /**
