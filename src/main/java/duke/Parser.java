@@ -83,7 +83,7 @@ public class Parser {
                 ToDos currInput = new ToDos(input.substring(5, input.length()));
                 taskList.addTask(currInput);
                 return "Got it. I've added this task:\n" + currInput.fullDesc() +
-                        "\n Now you have " + String.valueOf(taskList.getSize()) +
+                        "\nNow you have " + String.valueOf(taskList.getSize()) +
                         " tasks in this list.";
             } catch (StringIndexOutOfBoundsException t) {
                 return "☹ OOPS!!! The description of a todo cannot be empty.";
@@ -98,7 +98,7 @@ public class Parser {
                         userInput[1]);
                 taskList.addTask(currInput);
                 return "Got it. I've added this deadline:\n" + currInput.fullDesc() +
-                        "\n Now you have " + String.valueOf(taskList.getSize()) +
+                        "\nNow you have " + String.valueOf(taskList.getSize()) +
                         " tasks in this list.";
             } catch (StringIndexOutOfBoundsException t) {
                 return "☹ OOPS!!! The description of a deadline cannot be empty.";
@@ -113,7 +113,7 @@ public class Parser {
                         userInput[1]);
                 taskList.addTask(currInput);
                 return "Got it. I've added this event:\n" + currInput.fullDesc() +
-                        "\n Now you have " + String.valueOf(taskList.getSize()) +
+                        "\nNow you have " + String.valueOf(taskList.getSize()) +
                         " tasks in this list.";
             } catch (StringIndexOutOfBoundsException t) {
                 return "☹ OOPS!!! The description of an event cannot be empty.";
