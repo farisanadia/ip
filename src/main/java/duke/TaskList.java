@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class TaskList {
     protected ArrayList<Task> tasks;
-    protected Storage storage; //to update duke.txt
+    protected Storage storage; 
 
     public TaskList(ArrayList<Task> tasks, Storage storage) {
         this.tasks = tasks;
