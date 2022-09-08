@@ -40,7 +40,7 @@ public class Events extends Task {
      * Prints the full description of the event inputted by user.
      */
     @Override
-    public String fullDesc() {
+    public String getFullDesc() {
         return "      " + this.taskType + this.getStatusIcon() +
                 " " + this.description + " (" + this.duration + ")";
     }
@@ -50,13 +50,13 @@ public class Events extends Task {
      * @return String description
      */
     @Override
-    public String stringDesc() {
+    public String getStringDesc() {
         return this.taskType + this.getStatusIcon() +
                 " " + this.description + " (" + this.duration + ")";
     }
 
     @Override
-    public String textDesc() {
+    public String getTextDesc() {
         return "E : " + this.getStatusIcon() + " : " +
                 this.description + " : " + this.duration + "\n" ;
     }

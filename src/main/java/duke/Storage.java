@@ -73,7 +73,7 @@ public class Storage {
             PrintWriter writer = new PrintWriter(this.dukeFile);
             writer.print("");
             for (int i = 0; i < tasks.size(); i++) {
-                appendToFile(tasks.get(i).textDesc());
+                appendToFile(tasks.get(i).getTextDesc());
             }
             writer.close();
         } catch (FileNotFoundException e) {
