@@ -20,7 +20,7 @@ public class TaskList {
      */
     public void addTask(Task t) throws IOException {
         tasks.add(t);
-        this.storage.appendToFile(t.textDesc());
+        this.storage.appendToFile(t.getTextDesc());
     }
 
     /**
@@ -58,7 +58,7 @@ public class TaskList {
      * @param pos Index of task to be printed.
      */
     public String taskToString(int pos) {
-        return this.tasks.get(pos).fullDesc();
+        return this.tasks.get(pos).getFullDesc();
     }
 
     /**
@@ -69,7 +69,7 @@ public class TaskList {
         String fullString = "";
         for (int i = 0; i < tasks.size(); i++) {
             fullString += String.valueOf(i + 1) + ". "
-                    + tasks.get(i).stringDesc() + "\n";
+                    + tasks.get(i).getStringDesc() + "\n";
         }
         return fullString;
     }
@@ -85,9 +85,9 @@ public class TaskList {
     public String findTask(String s) {
         String fullString = "";
         for (int i = 0; i < tasks.size(); i++) {
-            if (tasks.get(i).textDesc().contains(s)) {
+            if (tasks.get(i).getTextDesc().contains(s)) {
                 fullString += String.valueOf(i + 1) + ". "
-                        + tasks.get(i).stringDesc() + "\n";
+                        + tasks.get(i).getStringDesc() + "\n";
             }
         }
         return fullString;

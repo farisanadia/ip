@@ -4,7 +4,7 @@ package duke;
  * Represents a task given by user. A Task object corresponds to a single task
  * inputted by the user, represented by a description and a status.
  */
-public class Task {
+public abstract class Task {
     protected String description;
     protected boolean isDone;
 
@@ -39,7 +39,7 @@ public class Task {
     /**
      * Prints description of task object.
      */
-    public String fullDesc() {
+    public String getFullDesc() {
         return "      " + this.getStatusIcon() + " " + this.description;
     }
 
@@ -47,7 +47,7 @@ public class Task {
      * Returns string description of task object.
      * @return String description.
      */
-    public String stringDesc() {
+    public String getStringDesc() {
         return this.getStatusIcon() + " " + this.description;
     }
 
@@ -55,7 +55,7 @@ public class Task {
      * Returns string of task inputted.
      * @return String task.
      */
-    public String textDesc() {
+    public String getTextDesc() {
         return this.description;
     }
 }

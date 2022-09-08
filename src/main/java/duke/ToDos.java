@@ -15,7 +15,7 @@ public class ToDos extends Task {
      * Prints the full description of the todo inputted by user.
      */
     @Override
-    public String fullDesc() {
+    public String getFullDesc() {
         return "      " + this.taskType +
                 this.getStatusIcon() + " " + this.description;
     }
@@ -25,13 +25,13 @@ public class ToDos extends Task {
      * @return String description
      */
     @Override
-    public String stringDesc() {
+    public String getStringDesc() {
         return this.taskType +
                 this.getStatusIcon() + " " + this.description;
     }
 
     @Override
-    public String textDesc() {
+    public String getTextDesc() {
         return "T : " + this.getStatusIcon() + " : " + this.description + "\n";
     }
 }

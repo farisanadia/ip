@@ -67,7 +67,7 @@ public class Parser {
         case "event" :
             return taskProcessor(s, userInput[0]);
         default:
-            return ui.printInvalidIndexError();
+            assert false : "☹ OOPS!!! I'm sorry, but I don't know what that means.";
         }
         return "I don't know this command. Try another one!";
     }
@@ -78,11 +78,12 @@ public class Parser {
      * @param taskType String type of task given by user.
      */
     public String taskProcessor(String input, String taskType) {
-        if (taskType.equals("todo")) {
+        switch (taskType.toLowerCase()) {
+        case ("todo"):
             try {
                 ToDos currInput = new ToDos(input.substring(5, input.length()));
                 taskList.addTask(currInput);
-                return "Got it. I've added this task:\n" + currInput.fullDesc() +
+                return "Got it. I've added this task:\n" + currInput.getFullDesc() +
                         "\nNow you have " + String.valueOf(taskList.getSize()) +
                         " tasks in this list.";
             } catch (StringIndexOutOfBoundsException t) {
@@ -90,14 +91,13 @@ public class Parser {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        if (taskType.equals("deadline")) {
+        case ("deadline"):
             try {
                 String[] userInput = input.split("/");
                 Deadlines currInput = new Deadlines(userInput[0].substring(9, userInput[0].length()),
                         userInput[1]);
                 taskList.addTask(currInput);
-                return "Got it. I've added this deadline:\n" + currInput.fullDesc() +
+                return "Got it. I've added this deadline:\n" + currInput.getFullDesc() +
                         "\nNow you have " + String.valueOf(taskList.getSize()) +
                         " tasks in this list.";
             } catch (StringIndexOutOfBoundsException t) {
@@ -105,14 +105,13 @@ public class Parser {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        if (taskType.equals("event")) {
+        case ("event"):
             try {
                 String[] userInput = input.split("/");
                 Events currInput = new Events(userInput[0].substring(6),
                         userInput[1]);
                 taskList.addTask(currInput);
-                return "Got it. I've added this event:\n" + currInput.fullDesc() +
+                return "Got it. I've added this event:\n" + currInput.getFullDesc() +
                         "\nNow you have " + String.valueOf(taskList.getSize()) +
                         " tasks in this list.";
             } catch (StringIndexOutOfBoundsException t) {
@@ -120,6 +119,8 @@ public class Parser {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        default:
+            assert false : ("☹ OOPS!!! I'm sorry, but I don't know what that means.");
         }
         return "I don't know this command. Try another one!";
     }
