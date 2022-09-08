@@ -12,11 +12,11 @@ public class Duke {
 
     public String getResponse(String input) throws IOException {
         if (!hasInitialised) {
-            File dukeFile = new File("duke.txt"); //creates new text file
+            File dukeFile = new File("duke.txt");
             dukeFile.createNewFile();
             storage = new Storage("duke.txt", dukeFile);
             taskList = new TaskList(storage.readFile(), storage);
-            parser = new Parser(ui, taskList); //must initialize taskList using storage
+            parser = new Parser(ui, taskList);
         }
         hasInitialised = true;
         return parser.inputProcessor(input);
