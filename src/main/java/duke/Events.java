@@ -60,4 +60,13 @@ public class Events extends Task {
         return "E : " + this.getStatusIcon() + " : " +
                 this.description + " : " + this.duration + "\n" ;
     }
+
+    /**
+     * Returns a string of the duration inputted by user.
+     * @return String duration.
+     */
+    @Override
+    public String checkSchedule() {
+        return this.duration;
+    }
 }

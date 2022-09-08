@@ -58,4 +58,6 @@ public abstract class Task {
     public String getTextDesc() {
         return this.description;
     }
+
+    public String checkSchedule() { return this.description; }
 }

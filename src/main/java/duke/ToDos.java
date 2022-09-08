@@ -34,4 +34,9 @@ public class ToDos extends Task {
     public String getTextDesc() {
         return "T : " + this.getStatusIcon() + " : " + this.description + "\n";
     }
+
+    @Override
+    public String checkSchedule() {
+        return "";
+    }
 }

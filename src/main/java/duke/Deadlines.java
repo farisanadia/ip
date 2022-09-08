@@ -60,4 +60,13 @@ public class Deadlines extends Task {
         return "D : " + this.getStatusIcon() + " : " +
                 this.description + " : " + this.deadline + "\n";
     }
+
+    /**
+     * Returns a string of the deadline inputted by user.
+     * @return String deadline.
+     */
+    @Override
+    public String checkSchedule() {
+        return this.deadline;
+    }
 }

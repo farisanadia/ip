@@ -82,6 +82,11 @@ public class TaskList {
         return this.tasks.size();
     }
 
+    /**
+     * Returns task containing description inputted by user.
+     * @param s String inputted by user.
+     * @return String description.
+     */
     public String findTask(String s) {
         String fullString = "";
         for (int i = 0; i < tasks.size(); i++) {
@@ -91,5 +96,23 @@ public class TaskList {
             }
         }
         return fullString;
+    }
+
+    /**
+     * Checks if two tasks occur at same time.
+     * Returns description of task with conflicting schedule.
+     * @param t Task with schedule that needs to be checked.
+     * @return String description.
+     */
+    public String checkScheduleClash(Task t) {
+        String ret = "";
+        for (int i = 0; i < tasks.size(); i++) {
+            if (t.checkSchedule() != "" &&
+                    t.checkSchedule().equals(tasks.get(i).checkSchedule())) {
+                ret += "WARNING: Scheduling conflict detected:\n " + tasks.get(i).getStringDesc() +
+                        "\n" + t.getStringDesc() + "\n";
+            }
+        }
+        return ret;
     }
 }

@@ -47,7 +47,6 @@ public class Parser {
             try {
                 int pos = Integer.parseInt(userInput[1]) - 1;
                 String temp = taskList.taskToString(pos);
-                ui.printString("    Noted. I've removed this task: ");
                 taskList.removeTask(pos);
                 return "    Noted. I've removed this task:\n" + temp +
                         "\n  Now you have " + String.valueOf(taskList.getSize()) +
@@ -96,10 +95,11 @@ public class Parser {
                 String[] userInput = input.split("/");
                 Deadlines currInput = new Deadlines(userInput[0].substring(9, userInput[0].length()),
                         userInput[1]);
+                String checkConflict = taskList.checkScheduleClash(currInput);
                 taskList.addTask(currInput);
                 return "Got it. I've added this deadline:\n" + currInput.getFullDesc() +
                         "\nNow you have " + String.valueOf(taskList.getSize()) +
-                        " tasks in this list.";
+                        " tasks in this list.\n" + checkConflict;
             } catch (StringIndexOutOfBoundsException t) {
                 return "☹ OOPS!!! The description of a deadline cannot be empty.";
             } catch (IOException e) {
@@ -110,10 +110,11 @@ public class Parser {
                 String[] userInput = input.split("/");
                 Events currInput = new Events(userInput[0].substring(6),
                         userInput[1]);
+                String checkConflict = taskList.checkScheduleClash(currInput);
                 taskList.addTask(currInput);
                 return "Got it. I've added this event:\n" + currInput.getFullDesc() +
                         "\nNow you have " + String.valueOf(taskList.getSize()) +
-                        " tasks in this list.";
+                        " tasks in this list.\n" + checkConflict;
             } catch (StringIndexOutOfBoundsException t) {
                 return "☹ OOPS!!! The description of an event cannot be empty.";
             } catch (IOException e) {
