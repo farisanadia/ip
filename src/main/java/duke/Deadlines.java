@@ -40,7 +40,7 @@ public class Deadlines extends Task {
      * Prints the full description of the deadline inputted by user.
      */
     @Override
-    public String fullDesc() {
+    public String getFullDesc() {
         return "      " + this.taskType + this.getStatusIcon() +
                 " " + this.description + " (" + this.deadline + ")";
     }
@@ -50,13 +50,13 @@ public class Deadlines extends Task {
      * @return String description
      */
     @Override
-    public String stringDesc() {
+    public String getStringDesc() {
         return this.taskType + this.getStatusIcon() +
                 " " + this.description + " (" + this.deadline + ")";
     }
 
     @Override
-    public String textDesc() {
+    public String getTextDesc() {
         return "D : " + this.getStatusIcon() + " : " +
                 this.description + " : " + this.deadline + "\n";
     }

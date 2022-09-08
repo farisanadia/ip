@@ -83,7 +83,7 @@ public class Parser {
             try {
                 ToDos currInput = new ToDos(input.substring(5, input.length()));
                 taskList.addTask(currInput);
-                return "Got it. I've added this task:\n" + currInput.fullDesc() +
+                return "Got it. I've added this task:\n" + currInput.getFullDesc() +
                         "\nNow you have " + String.valueOf(taskList.getSize()) +
                         " tasks in this list.";
             } catch (StringIndexOutOfBoundsException t) {
@@ -97,7 +97,7 @@ public class Parser {
                 Deadlines currInput = new Deadlines(userInput[0].substring(9, userInput[0].length()),
                         userInput[1]);
                 taskList.addTask(currInput);
-                return "Got it. I've added this deadline:\n" + currInput.fullDesc() +
+                return "Got it. I've added this deadline:\n" + currInput.getFullDesc() +
                         "\nNow you have " + String.valueOf(taskList.getSize()) +
                         " tasks in this list.";
             } catch (StringIndexOutOfBoundsException t) {
@@ -111,7 +111,7 @@ public class Parser {
                 Events currInput = new Events(userInput[0].substring(6),
                         userInput[1]);
                 taskList.addTask(currInput);
-                return "Got it. I've added this event:\n" + currInput.fullDesc() +
+                return "Got it. I've added this event:\n" + currInput.getFullDesc() +
                         "\nNow you have " + String.valueOf(taskList.getSize()) +
                         " tasks in this list.";
             } catch (StringIndexOutOfBoundsException t) {
