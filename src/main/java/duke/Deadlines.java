@@ -38,6 +38,7 @@ public class Deadlines extends Task {
 
     /**
      * Prints the full description of the deadline inputted by user.
+     * @return description.
      */
     @Override
     public String getFullDesc() {
@@ -62,7 +63,7 @@ public class Deadlines extends Task {
     }
 
     /**
-     * Returns a string of the deadline inputted by user.
+     * Returns string of schedule of task.
      * @return String deadline.
      */
     @Override

@@ -10,6 +10,12 @@ public class Duke {
     protected Parser parser;
     protected boolean hasInitialised = false;
 
+    /**
+     * Gets response from Duke.
+     * @param input User Input.
+     * @return String output.
+     * @throws IOException
+     */
     public String getResponse(String input) throws IOException {
         if (!hasInitialised) {
             File dukeFile = new File("duke.txt");

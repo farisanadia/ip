@@ -4,7 +4,6 @@ import java.io.IOException;
 
 public class Parser {
     protected Ui ui;
-    //to add Tasklist object that handles updating taskList as required
     protected TaskList taskList;
 
     public Parser(Ui ui, TaskList t) {
@@ -13,9 +12,9 @@ public class Parser {
     }
 
     /**
-     * Processes input given by user.
-     * If input unknown, passes error.
+     * Processes input given by user. If input unknown, passes error.
      * @param s Input given by user.
+     * @return String output.
      */
     public String inputProcessor(String s) {
         String[] userInput = s.split(" ");
@@ -75,6 +74,7 @@ public class Parser {
      * Processes specific task given by user.
      * @param input String input given by user to be processed.
      * @param taskType String type of task given by user.
+     * @return String output.
      */
     public String taskProcessor(String input, String taskType) {
         switch (taskType.toLowerCase()) {

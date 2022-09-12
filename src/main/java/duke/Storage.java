@@ -1,6 +1,10 @@
 package duke;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,31 +23,30 @@ public class Storage {
      */
     public ArrayList<Task> readFile() {
         ArrayList<Task> tasks = new ArrayList<>();
-        try{
+        try {
             Scanner sc = new Scanner(dukeFile);
             while (sc.hasNextLine()) {
                 String data = sc.nextLine();
                 String[] split = data.split(" : ");
-
                 switch (split[0]) {
-                    case "T" :
-                        tasks.add(new ToDos(split[2]));
-                        if (split[1].equals("[X]")) {
-                            tasks.get(tasks.size() - 1).markAsDone();
-                        }
-                        break;
-                    case "D" :
-                        tasks.add(new Deadlines(split[2], split[3]));
-                        if (split[1].equals("[X]")) {
-                            tasks.get(tasks.size() - 1).markAsDone();
-                        }
-                        break;
-                    case "E" :
-                        tasks.add(new Events(split[2], split[3]));
-                        if (split[1].equals("[X]")) {
-                            tasks.get(tasks.size() - 1).markAsDone();
-                        }
-                        break;
+                case "T" :
+                    tasks.add(new ToDos(split[2]));
+                    if (split[1].equals("[X]")) {
+                        tasks.get(tasks.size() - 1).markAsDone();
+                    }
+                    break;
+                case "D" :
+                    tasks.add(new Deadlines(split[2], split[3]));
+                    if (split[1].equals("[X]")) {
+                        tasks.get(tasks.size() - 1).markAsDone();
+                    }
+                    break;
+                case "E" :
+                    tasks.add(new Events(split[2], split[3]));
+                    if (split[1].equals("[X]")) {
+                        tasks.get(tasks.size() - 1).markAsDone();
+                    }
+                    break;
                 }
             }
         } catch (FileNotFoundException e) {
@@ -53,7 +56,7 @@ public class Storage {
     }
 
     /**
-     * Appends a task to dukeFile when task is to be added.
+     * Appends a task to dukeFile.
      * @param t String detailing task to be added.
      * @throws IOException if no file detected.
      */

@@ -13,6 +13,7 @@ public class ToDos extends Task {
 
     /**
      * Prints the full description of the todo inputted by user.
+     * @return String description.
      */
     @Override
     public String getFullDesc() {
@@ -22,7 +23,7 @@ public class ToDos extends Task {
 
     /**
      * Returns a string of the details of a todo inputted by user
-     * @return String description
+     * @return String description.
      */
     @Override
     public String getStringDesc() {

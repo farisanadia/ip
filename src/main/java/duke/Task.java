@@ -19,7 +19,7 @@ public abstract class Task {
      * @return String status.
      */
     public String getStatusIcon() {
-        return (isDone ? "[X]" : "[ ]"); //mark done task with x
+        return (isDone ? "[X]" : "[ ]");
     }
 
     /**
@@ -38,6 +38,7 @@ public abstract class Task {
 
     /**
      * Prints description of task object.
+     * @return String description.
      */
     public String getFullDesc() {
         return "      " + this.getStatusIcon() + " " + this.description;
@@ -59,5 +60,9 @@ public abstract class Task {
         return this.description;
     }
 
+    /**
+     * Returns string of schedule of task.
+     * @return String schedule.
+     */
     public String checkSchedule() { return this.description; }
 }

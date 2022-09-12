@@ -38,6 +38,7 @@ public class Events extends Task {
 
     /**
      * Prints the full description of the event inputted by user.
+     * @return String description.
      */
     @Override
     public String getFullDesc() {
@@ -62,7 +63,7 @@ public class Events extends Task {
     }
 
     /**
-     * Returns a string of the duration inputted by user.
+     * Returns string of schedule of task.
      * @return String duration.
      */
     @Override
