@@ -1,29 +1,57 @@
 # User Guide
 
-## Features 
+## Quick start
+1. Ensure you have Java 11.
+2. Download the latest version here.
+3. Copy the file to your chosen home folder.
+4. Double click to open start using DUKE.
 
-### Feature-ABC
+##Features
 
-Description of the feature.
+###**todo**
+Adds a todo task to your list.
 
-### Feature-XYZ
+Format:
+`todo <task>`
 
-Description of the feature.
+Example of usage:
 
-## Usage
+`todo eat food`
 
-### `Keyword` - Describe action
+###**deadline**
+Adds a task to your list with the given deadline.
 
-Describe the action and its outcome.
+Format: `deadline <deadline> \at <YYYY-MM-DD>`
 
-Example of usage: 
+###**event**
+Adds an event to you list at the given time.
 
-`keyword (optional arguments)`
+Format: `event <event> \by <YYYY-MM-DD>`
 
-Expected outcome:
+###**mark**
+Marks a task at the given index as done.
 
-Description of the outcome.
+Format: `mark <index>`
 
-```
-expected output
-```
+###**unmark**
+unmarks a task at the given index.
+
+Format: `unmark <index>`
+
+###**delete**
+Deletes task at a given index.
+
+Format: `delete <index>`
+
+###**list**
+Lists all task from task list.
+
+Format: `list`
+
+###**find**
+Finds a task from the task list matching the given keyword.
+
+Format: `find <keyword>`
+
+
+

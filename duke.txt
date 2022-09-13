@@ -1,0 +1,7 @@
+D : [X] : cs2105 assignment  : Sep 18 2022
+E : [ ] : family dinner  : Oct 1 2022
+T : [ ] : st2334 midterm
+E : [X] : dinner with friends  : Sep 21 2022
+D : [ ] : es2660 slides  : Sep 15 2022
+E : [ ] : es2660 presentation  : Sep 16 2022
+D : [ ] : cs2103 tp  : Sep 16 2022
